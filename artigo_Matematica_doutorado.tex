@@ -6,6 +6,9 @@
 \usepackage{graphicx}
 \usepackage{float}
 
+\usepackage{subcaption}
+
+
 \title{Modelos matemáticos para identificar o perfil 3d de superfícies digitalizados por meio da visão monocular com projeção de luz estruturada}
 \author{Elisângela Ribeiro, Fernando Pujaico Rivera, Bianca Batista Barreto,\\Roberto Alves Braga Junior, Marco Antônio Barbosa 
 \\elismar1952@hotmail.com; fernando.pujaico.rivera@gmail.com;
@@ -56,25 +59,38 @@ Nessa configuração, com o auxílio do projetor conectado ao computador, projet
 
 \subsection{Montagem da configuração experimental}
 
-Para a configuração do sistema, utilizou-se de uma fonte de luz como o projetor e apenas uma câmera, ambos dispostos em ângulos em relação ao objeto, ilustrado na Figura \ref{arranjo experimetal}, conhecido também como Luz estruturada (projeção de um padrão conhecido – como linhas horizontais que ao tocar o objeto desenha a sua superfície) por meio da visão monocular (utiliza apenas uma câmera).
+Para a configuração do sistema, utilizou-se de uma fonte de luz como o projetor e apenas uma câmera, ambos dispostos em ângulos em relação ao objeto, ilustrado na Figura \ref{arranjo-experimetal}, conhecido também como Luz estruturada (projeção de um padrão conhecido – como linhas horizontais que ao tocar o objeto desenha a sua superfície) por meio da visão monocular (utiliza apenas uma câmera).
 
 \begin{figure}[H]
-	\centering
-		\includegraphics[scale=0.5]{configuracao_sistema.png}
-	\caption{Arranjo experimental utilizando luz estruturada}
-	\label{arranjo experimetal}
+\centering
+    \begin{subfigure}{.695\textwidth}
+      \centering
+      % include first image
+      \includegraphics[width=.95\linewidth]{configuracao_sistema_1.eps}  
+      \caption{Disposição do arranjo experimental}
+      \label{arranjo-experimetal:1}
+    \end{subfigure}
+    \begin{subfigure}{.295\textwidth}
+      \centering
+      % include first image
+      \includegraphics[width=.95\linewidth]{configuracao_sistema_2.png}
+      \caption{Fotografia do arranjo experimental}
+      \label{arranjo-experimetal:2}
+    \end{subfigure}	
+\caption{Arranjo experimental utilizando luz estruturada}
+\label{arranjo-experimetal}
 \end{figure}
 
 
 Os equipamentos utilizados na configuração experimental foram: uma webcam com as seguintes configurações: Hd, 3.0 Mb, Usb da marca Logitech C270 960-000691, um projetor multimídia Benq com as seguintes descrições: Mx525b 3200 Lumens/Xga/Hdmi/3D Ready/Bndes e um computador portátil Sony Vaio Core i3. 
 
-Na configuração, a fonte de luz ficou fixada a uma distância de 171 cm do objeto. A câmera ficou fixada a uma distância de 136 cm do objeto, conforme ilustra a Figura \ref{arranjo experimetal}.  Com a utilização de um computador portátil conectado ao projetor, projetaram linhas sobre o objeto.
+Na configuração, a fonte de luz ficou fixada a uma distância de 171 cm do objeto. A câmera ficou fixada a uma distância de 136 cm do objeto, conforme ilustra a Figura \ref{arranjo-experimetal}.  Com a utilização de um computador portátil conectado ao projetor, projetaram linhas sobre o objeto.
 
 Ao montar a configuração experimental utilizando visão monocular, foi possível identificar várias variáveis no setup, conforme ilustra a Figura \ref{setup com as variaveis} a seguir.
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.5]{vista_sagital.eps}
+		\includegraphics[width=.55\linewidth]{vista_sagital.eps}
 	\caption{Variáveis da Configuração Experimental em uma vista sagital}
 	\label{setup com as variaveis}
 \end{figure}
@@ -105,7 +121,7 @@ Com a câmera fixada em um tripé, capturou-se uma foto da projeção da linha s
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.5]{imagem_projecao_colorida.png}
+		\includegraphics[width=.55\linewidth]{imagem_projecao_colorida.png}
 	\caption{a- Imagem objeto b- Imagem referência}
 	\label{imagem_projecao_colorida}
 \end{figure}
@@ -116,7 +132,7 @@ No fluxograma da Figura \ref{fluxograma_identificar_3D}, é responsável pelo pr
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.5]{fluxograma_identificar_3D.png}
+		\includegraphics[width=.55\linewidth]{fluxograma_identificar_3D.png}
 	\caption{Fluxograma para identificar o perfil 3D}
 	\label{fluxograma_identificar_3D}
 \end{figure}
@@ -129,7 +145,7 @@ Para realizar esse processo, um algoritmo baseado em identificação de cores fo
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.5]{identificar_linha_imagem.png}
+		\includegraphics[width=.55\linewidth]{identificar_linha_imagem.png}
 	\caption{Processo para identificação da linha na imagem digitalizada}
 	\label{identificar linha na imagem}
 \end{figure}
@@ -144,7 +160,7 @@ Nesta Seção, foi desenvolvido o sistema representado na Figura \ref{sitema_oti
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.5]{sitema_otimizacao.png}
+		\includegraphics[width=.55\linewidth]{sitema_otimizacao.png}
 	\caption{Sitema para otimizar parâmetros}
 	\label{sitema_otimizacao}
 \end{figure}
@@ -154,7 +170,7 @@ Utilizando o software Octave, foi possível desenvolver um algoritmo que fosse c
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.5]{fluxograma_identificar_parametros.png}
+		\includegraphics[width=.55\linewidth]{fluxograma_identificar_parametros.png}
 	\caption{Fluxograma para identificar parâmetros}
 	\label{identificar parametros}
 \end{figure}
@@ -176,14 +192,7 @@ Inserir o texto com as formulas do arquivo enviado
 
 \section{Resultados e Discussões}
 
-Utilizando apenas uma câmera fixada a uma distância de 136 centímetros em relação ao objeto e a uma altura de 75 centímetros da superfície; um projetor multimídia fixado a uma distância de 171 centímetros do objeto a ser analisado e a uma altura de 112 centímetros da superfície; em seguida, foi possível projetar linhas sobre o objeto de estudo e resultar em seu perfil após o processamento das imagens. A Figura \ref{medidas_setup} ilustra a disposição dos equipamentos, bem como suas respectivas medidas.
-
-\begin{figure}[H]
-	\centering
-		\includegraphics[scale=0.5]{medidas_setup.png}
-	\caption{a - Medidas da configuração experimental  b - Disposição das variáveis}
-	\label{medidas_setup}
-\end{figure}
+Utilizando apenas uma câmera fixada a uma distância de 136 centímetros em relação ao objeto e a uma altura de 75 centímetros da superfície; um projetor multimídia fixado a uma distância de 171 centímetros do objeto a ser analisado e a uma altura de 112 centímetros da superfície; em seguida, foi possível projetar linhas sobre o objeto de estudo e resultar em seu perfil após o processamento das imagens. A Figura \ref{arranjo-experimetal} ilustra a disposição dos equipamentos, bem como suas respectivas medidas.
 
 
 \section{Conclusões}
