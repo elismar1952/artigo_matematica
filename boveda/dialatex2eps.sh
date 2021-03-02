@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-FILENAME=( "vista_sagital" "vista_sagital")
+FILENAME=( "vista_sagital" "Diagrama1")
 
 for i in ${FILENAME[*]}; 
 do 
