@@ -1,6 +1,7 @@
 \documentclass[a4paper, 12pt]{article}
 \usepackage[top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[portuguese]{babel}
 \usepackage{indentfirst}
 \usepackage{graphicx}
@@ -42,13 +43,15 @@ Aqui vem o texto
 
 Os procedimentos metodológicos para a execução do projeto seguiram os seguintes passos:
 
-• Montagem da configuração experimental;
+\begin{itemize}
+\item Montagem da configuração experimental;
 
-• Digitalização de superfície conhecida;
+\item Digitalização de superfície conhecida;
 
-• Binarização de uma imagem em cores;
+\item Binarização de uma imagem em cores;
 
-• Otimizando experimentalmente os valores dos parâmetros. 
+\item Otimizando experimentalmente os valores dos parâmetros. 
+\end{itemize}
 
 Todos os experimentos foram realizados nas dependências da Universidade Federal de Lavras (UFLA), dividido entre os laboratórios nº 2 e 7 do Centro de Desenvolvimento à Instrumentação aplicado à Agropecuária (CEDIA), ligado ao Departamento de Automática.
 
@@ -61,7 +64,7 @@ Nessa configuração, com o auxílio do projetor conectado ao computador, projet
 
 Para a configuração do sistema, utilizou-se de uma fonte de luz como o projetor e apenas uma câmera, ambos dispostos em ângulos em relação ao objeto, ilustrado na Figura \ref{arranjo-experimetal}, conhecido também como Luz estruturada (projeção de um padrão conhecido – como linhas horizontais que ao tocar o objeto desenha a sua superfície) por meio da visão monocular (utiliza apenas uma câmera).
 
-\begin{figure}[H]
+\begin{figure}[h!]
 \centering
     \begin{subfigure}{.695\textwidth}
       \centering
@@ -88,7 +91,7 @@ Na configuração, a fonte de luz ficou fixada a uma distância de 171 cm do obj
 
 Ao montar a configuração experimental utilizando visão monocular, foi possível identificar várias variáveis no setup, conforme ilustra a Figura \ref{setup com as variaveis} a seguir.
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
 		\includegraphics[width=.55\linewidth]{vista_sagital.eps}
 	\caption{Variáveis da Configuração Experimental em uma vista sagital}
@@ -101,7 +104,7 @@ g: Medida em centímetros da altura do projetor em relação ao plano de referê
 
 f:  Distância em centímetros entre o projetor e a câmera;	          
 
-Q: Ângulo formado entre a câmera e o plano de referência;
+$\theta$: Ângulo formado entre a câmera e o plano de referência;
 
 $h_0$: Distância focal em pixels da câmera em relação ao objeto;  
 
@@ -117,12 +120,25 @@ Todas essas variáveis foram importantes para o desenvolvimento de modelos matem
 
 \subsection{Digitalização de uma superfície}
 
-Com a câmera fixada em um tripé, capturou-se uma foto da projeção da linha sobre o objeto, conforme ilustra a Figura \ref{imagem_projecao_colorida}a. Em seguida, removeu-se o objeto, e o mesmo procedimento foi repetido para a captura da imagem do plano, conhecida como imagem referência ilustrado na Figura \ref{imagem_projecao_colorida}b. 
+Com a câmera fixada em um tripé, capturou-se uma foto da projeção da linha sobre o objeto, conforme ilustra a Figura \ref{imagem_projecao_colorida:a}. Em seguida, removeu-se o objeto, e o mesmo procedimento foi repetido para a captura da imagem do plano, conhecida como imagem referência ilustrado na Figura \ref{imagem_projecao_colorida:b}. 
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
-		\includegraphics[width=.55\linewidth]{imagem_projecao_colorida.png}
-	\caption{a- Imagem objeto b- Imagem referência}
+    \begin{subfigure}{.45\textwidth}
+      \centering
+      % include first image
+      \includegraphics[width=.95\linewidth]{imagem_projecao_colorida_a.png} 
+      \caption{Imagem objeto}
+      \label{imagem_projecao_colorida:b}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}
+      \centering
+      % include first image
+      \includegraphics[width=.95\linewidth]{imagem_projecao_colorida_b.png} 
+      \caption{Imagem referência}
+      \label{imagem_projecao_colorida:b}
+    \end{subfigure}
+	\caption{Projeção das linhas coloridas}
 	\label{imagem_projecao_colorida}
 \end{figure}
 
@@ -130,7 +146,7 @@ As linhas projetadas nas costas dos humanos foram coloridas seguindo o padrão R
 
 No fluxograma da Figura \ref{fluxograma_identificar_3D}, é responsável pelo procedimento de transformação da imagem obtida na configuração em 3D, o qual primeiramente teve como objetivo apresentar o processo de transformação da imagem digitalizada, na configuração experimental, a uma representação em 3D. Para isso, foi necessário a captura das imagens objeto e referência com a projeção das linhas coloridas sobre as costas humana. Em seguida, foi desenvolvido um algoritmo para a binarização de uma imagem em cores.
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
 		\includegraphics[width=.55\linewidth]{fluxograma_identificar_3D.png}
 	\caption{Fluxograma para identificar o perfil 3D}
@@ -143,9 +159,9 @@ Esta Seção foi responsável por transformar as imagens capturadas em apenas li
 
 Para realizar esse processo, um algoritmo baseado em identificação de cores foi desenvolvido. Ele teve como dados de entrada a imagem original digitalizada, na qual o algoritmo percorreu toda ela e identificou a cor desejada e descartou todos as outras, obtendo, assim, como imagem final somente a linha da superfície digitalizada, conforme ilustra a Figura \ref{identificar linha na imagem}.
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
-		\includegraphics[width=.55\linewidth]{identificar_linha_imagem.png}
+		\includegraphics[width=.75\linewidth]{identificar_linha_imagem.png}
 	\caption{Processo para identificação da linha na imagem digitalizada}
 	\label{identificar linha na imagem}
 \end{figure}
@@ -156,9 +172,9 @@ Inserir o texto com as formulas do arquivo enviado
 
 
 \section{Otimizando experimentalmente os valores dos parâmetros}
-Nesta Seção, foi desenvolvido o sistema representado na Figura \ref{sitema_otimizacao}, o qual foi composto por cinco variáveis ($h_0$, D, Q, f e g), e seus parâmetros foram possíveis de serem identificados de forma manual que, eventualmente, possui erro devido à imprecisão de medição humana. Porém, é necessário que esses parâmetros sejam o mais real possível, sendo necessário realizar uma aproximação desses dados.
+Nesta Seção, foi desenvolvido o sistema representado na Figura \ref{sitema_otimizacao}, o qual foi composto por cinco variáveis ($h_0$, D, $\theta$, f e g), e seus parâmetros foram possíveis de serem identificados de forma manual que, eventualmente, possui erro devido à imprecisão de medição humana. Porém, é necessário que esses parâmetros sejam o mais real possível, sendo necessário realizar uma aproximação desses dados.
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
 		\includegraphics[width=.55\linewidth]{sitema_otimizacao.png}
 	\caption{Sitema para otimizar parâmetros}
@@ -168,14 +184,14 @@ Nesta Seção, foi desenvolvido o sistema representado na Figura \ref{sitema_oti
 Utilizando o software Octave, foi possível desenvolver um algoritmo que fosse capaz de otimizar os dados inseridos manualmente e retornar o melhor valor da medição com o menor erro possível. Baseado nos passos descritos no fluxograma da Figura \ref{identificar parametros}, foi possível realizar essa aproximação dos dados.
 
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
 		\includegraphics[width=.55\linewidth]{fluxograma_identificar_parametros.png}
 	\caption{Fluxograma para identificar parâmetros}
 	\label{identificar parametros}
 \end{figure}
 
-Para desenvolver o algoritmo de otimização dos parâmetros, primeiro definiram-se os parâmetros do sistema como sendo $h_0$, D, Q, f e g, para receber os dados calculados manualmente. Logo, foi criado um vetor com o propósito de receber os parâmetros de $c_0$ e $d_0$ que foram calculados do primeiro objeto digitalizado, com o objetivo de otimizar e identificar os melhores parâmetros para z.
+Para desenvolver o algoritmo de otimização dos parâmetros, primeiro definiram-se os parâmetros do sistema como sendo $h_0$, D, $\theta$, f e g, para receber os dados calculados manualmente. Logo, foi criado um vetor com o propósito de receber os parâmetros de $c_0$ e $d_0$ que foram calculados do primeiro objeto digitalizado, com o objetivo de otimizar e identificar os melhores parâmetros para z.
 
 Uma função para receber todos os dados da geometria foi desenvolvida. Utilizou-se de cálculos matemáticos baseados no método dos mínimos quadrados, pelo qual se procurou encontrar o melhor ajuste para o conjunto de dados medidos manualmente, tentando minimizar a soma dos quadrados das diferenças entre os valores estimados e os dados medidos manualmente; porém, utilizar parâmetros calculados medidos manualmente apresentou respostas com erros.
 
@@ -183,7 +199,7 @@ Para melhorar os parâmetros medidos manualmente, foi necessário oferecer mais 
 
 Com o conjunto de parâmetros f, g, $h_0$, $c_0$, $d_0$ calculados manualmente, realizaram-se as interações com base nos três parâmetros de entrada que retornaram ao melhor valor dos parâmetros do sistema, ou seja, oferecendo os parâmetros certos citados acima, o sistema funcionou perfeitamente, Figura \ref{sitema_otimizacao}. Uma variável E foi inserida ao algoritmo para representar o valor do erro estimado entre as interações feitas nos parâmetros no algoritmo. Essa variável representou que quanto menor o erro, melhor a interação realizada.
 
-Para que a otimização desses parâmetros alcançasse seus melhores resultados, foram utilizados no mínimo 5 grupos de $c_0$, $d_0$ e z, que foram oferecidos em blocos/vetor, pois quanto mais amostras de entrada para z, $c_0$ e $d_0$, melhor os ajustes dos parâmetros e com retorno de valores mais favoráveis para $h_0$, D, Q, f e g. 
+Para que a otimização desses parâmetros alcançasse seus melhores resultados, foram utilizados no mínimo 5 grupos de $c_0$, $d_0$ e z, que foram oferecidos em blocos/vetor, pois quanto mais amostras de entrada para z, $c_0$ e $d_0$, melhor os ajustes dos parâmetros e com retorno de valores mais favoráveis para $h_0$, D, $\theta$, f e g. 
 
 \subsection{Lógica matemática para otimização dos parâmetros do sistema}
 
