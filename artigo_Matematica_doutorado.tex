@@ -103,15 +103,15 @@ f:  Distância em centímetros entre o projetor e a câmera;
 
 Q: Ângulo formado entre a câmera e o plano de referência;
 
-h0: Distância focal em pixels da câmera em relação ao objeto;  
+$h_0$: Distância focal em pixels da câmera em relação ao objeto;  
 
 D:  Distância em centímetros entre sigma e beta;
 
 C: Altura real do objeto, também identificado pela variável z;
 
-c0: Altura relativa em pixels do objeto na imagem digitalizada;
+$c_0$: Altura relativa em pixels do objeto na imagem digitalizada;
 
-d0: Diferença em pixels entre o ponto central real da imagem até a linha de referência projetada, sendo que esses dados estão em referência na fotografia digitalizada. 
+$d_0$: Diferença em pixels entre o ponto central real da imagem até a linha de referência projetada, sendo que esses dados estão em referência na fotografia digitalizada. 
  
 Todas essas variáveis foram importantes para o desenvolvimento de modelos matemáticos utilizados nos algoritmos desenvolvidos. 
 
@@ -156,7 +156,7 @@ Inserir o texto com as formulas do arquivo enviado
 
 
 \section{Otimizando experimentalmente os valores dos parâmetros}
-Nesta Seção, foi desenvolvido o sistema representado na Figura \ref{sitema_otimizacao}, o qual foi composto por cinco variáveis (h0, D, Q, f e g), e seus parâmetros foram possíveis de serem identificados de forma manual que, eventualmente, possui erro devido à imprecisão de medição humana. Porém, é necessário que esses parâmetros sejam o mais real possível, sendo necessário realizar uma aproximação desses dados.
+Nesta Seção, foi desenvolvido o sistema representado na Figura \ref{sitema_otimizacao}, o qual foi composto por cinco variáveis ($h_0$, D, Q, f e g), e seus parâmetros foram possíveis de serem identificados de forma manual que, eventualmente, possui erro devido à imprecisão de medição humana. Porém, é necessário que esses parâmetros sejam o mais real possível, sendo necessário realizar uma aproximação desses dados.
 
 \begin{figure}[H]
 	\centering
@@ -175,15 +175,15 @@ Utilizando o software Octave, foi possível desenvolver um algoritmo que fosse c
 	\label{identificar parametros}
 \end{figure}
 
-Para desenvolver o algoritmo de otimização dos parâmetros, primeiro definiram-se os parâmetros do sistema como sendo h0, D, Q, f e g, para receber os dados calculados manualmente. Logo, foi criado um vetor com o propósito de receber os parâmetros de c0 e d0 que foram calculados do primeiro objeto digitalizado, com o objetivo de otimizar e identificar os melhores parâmetros para z.
+Para desenvolver o algoritmo de otimização dos parâmetros, primeiro definiram-se os parâmetros do sistema como sendo $h_0$, D, Q, f e g, para receber os dados calculados manualmente. Logo, foi criado um vetor com o propósito de receber os parâmetros de $c_0$ e $d_0$ que foram calculados do primeiro objeto digitalizado, com o objetivo de otimizar e identificar os melhores parâmetros para z.
 
 Uma função para receber todos os dados da geometria foi desenvolvida. Utilizou-se de cálculos matemáticos baseados no método dos mínimos quadrados, pelo qual se procurou encontrar o melhor ajuste para o conjunto de dados medidos manualmente, tentando minimizar a soma dos quadrados das diferenças entre os valores estimados e os dados medidos manualmente; porém, utilizar parâmetros calculados medidos manualmente apresentou respostas com erros.
 
-Para melhorar os parâmetros medidos manualmente, foi necessário oferecer mais parâmetros de entrada ao sistema da Figura \ref{sitema_otimizacao}; porém, desta vez, recebendo como parâmetros de entrada c0, correspondente às linhas projetadas no plano em relação às mesmas linhas em cima do objeto, d0 correspondente à diferença entre o meio da imagem e à linha de referência no plano e à variável z, como a altura real do objeto.
+Para melhorar os parâmetros medidos manualmente, foi necessário oferecer mais parâmetros de entrada ao sistema da Figura \ref{sitema_otimizacao}; porém, desta vez, recebendo como parâmetros de entrada $c_0$, correspondente às linhas projetadas no plano em relação às mesmas linhas em cima do objeto, $d_0$ correspondente à diferença entre o meio da imagem e à linha de referência no plano e à variável z, como a altura real do objeto.
 
-Com o conjunto de parâmetros f, g, h0, c0, d0 calculados manualmente, realizaram-se as interações com base nos três parâmetros de entrada que retornaram ao melhor valor dos parâmetros do sistema, ou seja, oferecendo os parâmetros certos citados acima, o sistema funcionou perfeitamente, Figura \ref{sitema_otimizacao}. Uma variável E foi inserida ao algoritmo para representar o valor do erro estimado entre as interações feitas nos parâmetros no algoritmo. Essa variável representou que quanto menor o erro, melhor a interação realizada.
+Com o conjunto de parâmetros f, g, $h_0$, $c_0$, $d_0$ calculados manualmente, realizaram-se as interações com base nos três parâmetros de entrada que retornaram ao melhor valor dos parâmetros do sistema, ou seja, oferecendo os parâmetros certos citados acima, o sistema funcionou perfeitamente, Figura \ref{sitema_otimizacao}. Uma variável E foi inserida ao algoritmo para representar o valor do erro estimado entre as interações feitas nos parâmetros no algoritmo. Essa variável representou que quanto menor o erro, melhor a interação realizada.
 
-Para que a otimização desses parâmetros alcançasse seus melhores resultados, foram utilizados no mínimo 5 grupos de c0, d0 e z, que foram oferecidos em blocos/vetor, pois quanto mais amostras de entrada para z, c0 e d0, melhor os ajustes dos parâmetros e com retorno de valores mais favoráveis para h0, D, Q, f e g. 
+Para que a otimização desses parâmetros alcançasse seus melhores resultados, foram utilizados no mínimo 5 grupos de $c_0$, $d_0$ e z, que foram oferecidos em blocos/vetor, pois quanto mais amostras de entrada para z, $c_0$ e $d_0$, melhor os ajustes dos parâmetros e com retorno de valores mais favoráveis para $h_0$, D, Q, f e g. 
 
 \subsection{Lógica matemática para otimização dos parâmetros do sistema}
 
@@ -197,7 +197,8 @@ Utilizando apenas uma câmera fixada a uma distância de 136 centímetros em rel
 
 \section{Conclusões}
 
-•	Foi possível desenvolver uma configuração experimental baseada no método interferométrico a partir de apenas uma webcam e um projetor multimídia. 
+
+Foi possível desenvolver uma configuração experimental baseada no método interferométrico a partir de apenas uma webcam e um projetor multimídia. 
 
 
 \section*{Referências}
