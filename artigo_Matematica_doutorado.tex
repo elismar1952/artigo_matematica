@@ -60,6 +60,15 @@ A configuração experimental foi elaborada por meio da visão monocular (RIBEIR
 Nessa configuração, com o auxílio do projetor conectado ao computador, projetam-se linhas horizontais sobre o objeto em análise, de forma a identificar o delineamento da superfície.
 
 
+No fluxograma da Figura \ref{fluxograma_identificar_3D}, é responsável pelo procedimento de transformação da imagem obtida na configuração em 3D, o qual primeiramente teve como objetivo apresentar o processo de transformação da imagem digitalizada, na configuração experimental, a uma representação em 3D. Para isso, foi necessário a captura das imagens objeto e referência com a projeção das linhas coloridas sobre as costas humana. Em seguida, foi desenvolvido um algoritmo para a binarização de uma imagem em cores.
+
+\begin{figure}[h!]
+	\centering
+		\includegraphics[width=.55\linewidth]{fluxograma_identificar_3D.png}
+	\caption{Fluxograma para identificar o perfil 3D}
+	\label{fluxograma_identificar_3D}
+\end{figure}
+
 \subsection{Montagem da configuração experimental}
 
 Para a configuração do sistema, utilizou-se de uma fonte de luz como o projetor e apenas uma câmera, ambos dispostos em ângulos em relação ao objeto, ilustrado na Figura \ref{arranjo-experimetal}, conhecido também como Luz estruturada (projeção de um padrão conhecido – como linhas horizontais que ao tocar o objeto desenha a sua superfície) por meio da visão monocular (utiliza apenas uma câmera).
@@ -113,23 +122,25 @@ Sendo:
  
 Todas essas variáveis foram importantes para o desenvolvimento de modelos matemáticos utilizados nos algoritmos desenvolvidos. 
 
+
+
 \subsection{Digitalização de uma superfície}
 
 Com a câmera fixada em um tripé, capturou-se uma foto da projeção da linha sobre o objeto, conforme ilustra a Figura \ref{imagem_projecao_colorida:a}. Em seguida, removeu-se o objeto, e o mesmo procedimento foi repetido para a captura da imagem do plano, conhecida como imagem referência ilustrado na Figura \ref{imagem_projecao_colorida:b}. 
 
 \begin{figure}[h!]
 	\centering
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{.35\textwidth}
       \centering
       % include first image
-      \includegraphics[width=.95\linewidth]{imagem_projecao_colorida_a.png} 
+      \includegraphics[width=.85\linewidth]{imagem_projecao_colorida_a.png} 
       \caption{Imagem objeto}
       \label{imagem_projecao_colorida:a}
     \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{.35\textwidth}
       \centering
       % include first image
-      \includegraphics[width=.95\linewidth]{imagem_projecao_colorida_b.png} 
+      \includegraphics[width=.85\linewidth]{imagem_projecao_colorida_b.png} 
       \caption{Imagem referência}
       \label{imagem_projecao_colorida:b}
     \end{subfigure}
@@ -137,18 +148,10 @@ Com a câmera fixada em um tripé, capturou-se uma foto da projeção da linha s
 	\label{imagem_projecao_colorida}
 \end{figure}
 
-As linhas projetadas nas costas dos humanos foram coloridas seguindo o padrão RGB (LUKAC; PLATANIOTIS, 2005) associado às cores preta e branca, de forma que uma das cinco cores projetadas fossem visualizadas nas fotos capturadas, pois o conjunto de amostras possuíam uma variedade de tonalidade na cor da pele.
+As linhas projetadas nas costas das pessoas foram coloridas seguindo o padrão RGB (LUKAC; PLATANIOTIS, 2005) associado às cores preta e branca, de forma que uma das cinco cores projetadas fossem visualizadas nas fotos capturadas, pois o conjunto de amostras possuíam uma variedade de tonalidade na cor da pele.
 
-No fluxograma da Figura \ref{fluxograma_identificar_3D}, é responsável pelo procedimento de transformação da imagem obtida na configuração em 3D, o qual primeiramente teve como objetivo apresentar o processo de transformação da imagem digitalizada, na configuração experimental, a uma representação em 3D. Para isso, foi necessário a captura das imagens objeto e referência com a projeção das linhas coloridas sobre as costas humana. Em seguida, foi desenvolvido um algoritmo para a binarização de uma imagem em cores.
 
-\begin{figure}[h!]
-	\centering
-		\includegraphics[width=.55\linewidth]{fluxograma_identificar_3D.png}
-	\caption{Fluxograma para identificar o perfil 3D}
-	\label{fluxograma_identificar_3D}
-\end{figure}
-
-\subsubsection{Algoritmo de identificação de linha}
+\subsection{Binarização de uma imagem em cores}
 
 Esta Seção foi responsável por transformar as imagens capturadas em apenas linhas (binária), ou seja, deixar em evidência binária somente a linha de melhor delineamento, que no caso das imagens digitalizadas, a cor vermelha foi a que teve o melhor destaque nas costas dos indivíduos.
 
@@ -174,7 +177,7 @@ Para realizar esse processo, um algoritmo baseado em identificação de cores fo
 \label{fig:cordetect}
 \end{figure}
 
-\subsection{Lógica matemática para detectar as cores}
+\subsubsection{Algoritmo de identificação de linha}
 
 Conhecida uma imagem $\textbf{A}$ com $L$ pixels codificados 
 em RGB (como na Figura \ref{fig:cordetect:rgb}), onde $a_l=(r_l,g_l,b_l)\in \mathbb{R}^3$
