@@ -303,19 +303,14 @@ o valor $b_0$   representa a distancia horizontal de um ponto da linha do objeto
 Os parâmetros do sistema $\mathbf{K}\equiv \{h_0,D,\theta,f,g\}$ são agrupado num vetor $\mathbf{K}$,
 e estos valores são extraídos da geometria do sistema; 
 por este motivo estes valores não mudam para todos os pontos $p_m$, $\forall~ 1\leq m \leq M$.
-A Figura \ref{fig:setup1} mostra uma vista sagital da disposição do sistema,
+A Figura \ref{setup com as variaveis} mostra uma vista sagital da disposição do sistema,
 onde as variáveis $h_0$, $D$, $\theta$, $f$ e $g$ são obtidas. 
 Dado que a vista é sagital somente são mostradas aqui os valores $y$ e $z$
 de um ponto $P=(x,y,z)$;
 onde $z$ representa  altura do objeto e 
 $y$ a distancia vertical da base do objeto em estudo ao ponto no plano de referencia a onde aponta a câmera;
 este ponto é considerada a posição $(0,0,0)$ em 3D.
-\begin{figure}[!h]
-     \centering
-         \includegraphics[width=0.7\textwidth]{Diagrama1.eps}
-\caption{Vista sagital do sistema.}
-\label{fig:setup1}
-\end{figure}
+
 
 A função $func\_3d()$ calcula a altura $z$ de um ponto mediante as
 Equações (\ref{eq:setup1}) e (\ref{eq:setup2}),
@@ -434,15 +429,10 @@ porém a aproximação de primeiro ordem já cumpre com o objetivo.
 \end{remark}
 
 Assim, usando a função $f_{\mathbf{P}}(c_0)$ podemos achar a altura $z$
-a partir do valor $c_0$ numa fotografia, como mostra a Figura \ref{fig:setup1}.
+a partir do valor $c_0$ numa fotografia, como mostra a Figura \ref{fig:blocos:obj}.
 Lembrando que $c_0$ é a medida de diferencia da altura entre de um objeto na fotografia
 e a linha de referencia numa posição $d_0$.
-\begin{figure}[!h]
-     \centering
-         \includegraphics[width=0.4\textwidth]{Diagrama7.eps}
-\caption{Obtendo o valor $c_0$.}
-\label{fig:setup1}
-\end{figure}
+
 
 Por outro lado, para obter o valor $p_1$ é usado um objeto de tamanho $z$ conhecido,
 ao qual se lhe toma uma fotografia e se obtém o valor $c_0$;
